@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires, semi
-const { User } = require('../../database/models/index');
+const { User } = require('../../database/models');
 
 const getAllUsers = async () => {
   try {
@@ -11,4 +11,4 @@ const getAllUsers = async () => {
   }
 }
 
-module.exports = { getAllUsers }
+export { getAllUsers }

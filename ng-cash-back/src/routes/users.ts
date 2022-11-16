@@ -1,8 +1,9 @@
 import express from 'express'
-import getUsers from '../controllers/users/getUsers'
-
+import { getAllUsers, createNewUser } from '../controllers/users'
+import { authLogin } from '../middlewares/authentication'
 const router = express.Router({ mergeParams: true })
 
-router.get('/', getUsers)
+router.get('/', authLogin, getAllUsers)
+router.post('/', createNewUser)
 
 export default router
