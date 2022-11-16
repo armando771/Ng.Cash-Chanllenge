@@ -6,7 +6,6 @@ const createNewUser = async (req: Request, res: Response, next: NextFunction) =>
   try {
     const { username, password, accountId } = req.body
     const response = await service.createNewUser({ username, password, accountId })
-    console.log(response, 'resposta')
 
     return res.status(200).send(response)
   } catch (err) {

@@ -5,12 +5,12 @@ module.exports = {
     [
       {
         username: 'Armando',
-        password: 1234123,
+        password: '1234123',
         account_id: 1
       },
       {
         username: 'kaka',
-        password: 13213321,
+        password: '13213321',
         account_id: 2
       }
     ], {}),

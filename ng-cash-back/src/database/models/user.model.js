@@ -1,7 +1,7 @@
 const UserModel = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
-    password: DataTypes.INTEGER,
+    password: DataTypes.STRING,
     account_id: { type: DataTypes.INTEGER, foreignKey: true }
   }, { timestamps: false, underscored: true, tableName: 'Users' })
 

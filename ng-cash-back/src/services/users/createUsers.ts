@@ -1,10 +1,10 @@
-// import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt'
 // eslint-disable-next-line @typescript-eslint/no-var-requires, semi
 const { User } = require('../../database/models/index');
 
 interface UsersBody {
     username: string;
-    password: number;
+    password: string;
     accountId: number;
 }
 
@@ -12,10 +12,9 @@ const createNewUser = async (body: UsersBody) => {
   try {
     const { username, password, accountId } = body
 
-    // const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 10)
 
-    const result = await User.create({ username, password, accountId })
-    console.log(result, 'results')
+    const result = await User.create({ username, password: hashedPassword, accountId })
     return result
   } catch (error) {
     console.log(error)

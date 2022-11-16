@@ -8,11 +8,10 @@ const secret = fs.readFileSync(path.resolve(__dirname, '../../jwt.evaluation.key
 const authLogin = (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = req.headers.authorization
-    console.log(token, 'tokennnnn')
 
     if (!token) return res.status(401).send({ message: 'Token not found' })
     const decoded = jwt.verify(token, secret.trim())
-    console.log(decoded, 'verificaçao de token')
+    delete decoded.data.password
 
     next()
   } catch (err) {
