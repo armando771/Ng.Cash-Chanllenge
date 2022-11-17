@@ -13,26 +13,28 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      // debitedAccountId: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   references: {
-      //     model: 'Accounts',
-      //     key: 'id'
-      //   },
-      //   onUpdate: 'CASCADE',
-      //   onDelete: 'CASCADE'
-      // },
-      // creditedAccountId: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   references: {
-      //     model: 'Accounts',
-      //     key: 'id'
-      //   },
-      //   onUpdate: 'CASCADE',
-      //   onDelete: 'CASCADE'
-      // },
+      debitedAccountId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Accounts',
+          key: 'id',
+          field: 'debitedAccountId'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      creditedAccountId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Accounts',
+          key: 'id',
+          field: 'creditedAccountId'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
