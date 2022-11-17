@@ -26,7 +26,7 @@ const createNewTransition = async (body: TransitionBody) => {
 
     const result = await Transaction.create({ debitedAccountId, creditedAccountId, value })
 
-    return result.status(201).json(result)
+    return result
   } catch (error) {
     console.log(error)
     return { message: 'Erro ao cadastrar novo usuario' }
