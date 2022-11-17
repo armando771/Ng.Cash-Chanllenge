@@ -16,12 +16,12 @@ export const GridContainer = styled(Grid)({
 
 export const StyledTextField = styled(TextField)({
     margin: '5px 5px 8px 5px !important',
-    width: '100%'
+    width: '98%'
 })
 
 export const StyledButton = styled(Button)({
     margin: '5px !important',
-    width: '100%',
+    width: '98%',
     backgroundColor: 'black !important',
     color: 'white !important',
 })

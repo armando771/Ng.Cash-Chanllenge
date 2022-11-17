@@ -7,10 +7,10 @@ export default function Login() {
     <GridContainer container>
       <Paper elevation={3} sx={{ width: '30%' }} >
         <Grid style={{ textAlign: "center", padding: "15px"}}>
-          <Typography variant="h4">NG.PAY</Typography>
+          <Typography variant="h4" style={{ fontFamily: 'monospace' }} >NG.PAYments</Typography>
           <Grid item style={{ display: 'flex', flexDirection: 'column' }}>
-            <StyledTextField label="Your Username" variant="outlined" />
-            <StyledTextField label="Your Password" variant="outlined" />
+            <StyledTextField label="Your Username" variant="outlined" color="secondary" />
+            <StyledTextField label="Your Password" variant="outlined" color="secondary" />
           </Grid>
             <StyledButton type="button">Login</StyledButton>
             <Typography variant="h6">Não tem uma conta?</Typography>
