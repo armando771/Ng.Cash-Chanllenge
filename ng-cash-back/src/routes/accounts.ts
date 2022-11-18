@@ -1,8 +1,10 @@
 import express from 'express'
-import { getAllAccounts } from '../controllers/accounts'
+import { getAllAccounts, getAccountById } from '../controllers/accounts'
+import { authLogin } from '../middlewares/authentication'
 
 const router = express.Router({ mergeParams: true })
 
-router.get('/', getAllAccounts)
+router.get('/:id', authLogin, getAccountById)
+router.get('/', authLogin, getAllAccounts)
 
 export default router

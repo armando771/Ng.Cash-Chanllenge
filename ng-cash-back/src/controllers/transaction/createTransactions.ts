@@ -7,7 +7,10 @@ const createNewTransition = async (req: Request, res: Response, next: NextFuncti
     const { debitedAccountId, creditedAccountId, value } = req.body
 
     const result = await service.createNewTransition({ debitedAccountId, creditedAccountId, value })
-    return res.status(201).json(result)
+
+    console.log(result, 'result')
+
+    return res.status(201).json({ id: result.id, debitedAccountId: result.debitedAccountId, creditedAccountId: result.creditedAccountId, value: result.value, createdAt: result.createdAt })
   } catch (err) {
     console.log(err)
 
@@ -15,4 +18,4 @@ const createNewTransition = async (req: Request, res: Response, next: NextFuncti
   }
 }
 
-export { createNewTransition }
+export default createNewTransition

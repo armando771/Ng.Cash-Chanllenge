@@ -1,5 +1,6 @@
 import getAllAccounts from './getAccounts'
+import getAccountById from './getAccountsById'
 
 export {
-  getAllAccounts
+  getAllAccounts, getAccountById
 }

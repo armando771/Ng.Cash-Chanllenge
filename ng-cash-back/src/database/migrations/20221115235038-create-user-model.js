@@ -12,10 +12,10 @@ module.exports = {
       account_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        field: 'accountId',
         references: {
           model: 'Accounts',
-          key: 'id',
-          field: 'accountId'
+          key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'

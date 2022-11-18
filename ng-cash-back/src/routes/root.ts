@@ -9,6 +9,6 @@ const root = express.Router()
 root.use('/auth', loginRoutes)
 root.use('/users', usersRoutes)
 root.use('/accounts', accountsRoutes)
-root.use('/transations', transatinRoutes)
+root.use('/transactions', transatinRoutes)
 
 export default root
