@@ -22,17 +22,18 @@ export default function Register() {
 
   const onSubmit = async () => {
     try {
-      const inputValues = {
+      const body = {
+        username: inputUsername,
         password: inputPassword,
-        username: inputUsername
+        balance: 100
       }
 
-      const isValid = await schema.isValid(inputValues)
+      const isValid = await schema.isValid(body)
       .then((valid) => valid)
       .catch(err => err)
       
       if (isValid) {
-        console.log('e valido');
+        await api.post('users', body).then((it) => console.log(it))
       }
       
 
