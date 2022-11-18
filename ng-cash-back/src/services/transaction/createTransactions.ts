@@ -15,14 +15,8 @@ const createNewTransition = async (body: TransitionBody) => {
     const debitedAccount = await Account.findByPk(debitedAccountId)
     const creditedAccount = await Account.findByPk(creditedAccountId)
 
-    console.log(debitedAccount.balance, debitedAccount.id, 'debitada')
-    console.log(creditedAccount.balance, creditedAccount.id, 'creditada')
-
-    const [accountDebitedBalance] = await updateAccount({ balance: debitedAccount.balance - value, id: debitedAccount.id })
-    const [accountCreditecBalance] = await updateAccount({ balance: creditedAccount.balance + value, id: creditedAccount.id })
-
-    console.log(accountDebitedBalance, 'account Debited')
-    console.log(accountCreditecBalance, 'account Credited')
+    await updateAccount({ balance: debitedAccount.balance - value, id: debitedAccount.id })
+    await updateAccount({ balance: creditedAccount.balance + value, id: creditedAccount.id })
 
     const result = await Transaction.create({ debitedAccountId, creditedAccountId, value })
 

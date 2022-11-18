@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     value: DataTypes.INTEGER,
     debited_account_id: { type: DataTypes.INTEGER, foreignKey: true },
     credited_account_id: { type: DataTypes.INTEGER, foreignKey: true }
-  }, { underscored: true, tableName: 'Transactions', updatedAt: false })
+  }, { tableName: 'Transactions', updatedAt: false, underscored: true })
 
   Transaction.associate = (models) => {
     Transaction.belongsTo(models.Account, { foreignKey: 'debited_account_id', as: 'accountsCred' })

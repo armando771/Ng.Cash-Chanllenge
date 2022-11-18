@@ -9,13 +9,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      account_id: {
+      accountId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        field: 'accountId',
         references: {
           model: 'Accounts',
-          key: 'id'
+          key: 'id',
+          field: 'account_id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'

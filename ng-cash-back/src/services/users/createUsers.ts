@@ -14,7 +14,7 @@ const createNewUser = async (body: UsersBody) => {
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    const result = await User.create({ username, password: hashedPassword, account_id: accountId })
+    const result = await User.create({ username, password: hashedPassword, accountId })
     return result
   } catch (error) {
     console.log(error)
