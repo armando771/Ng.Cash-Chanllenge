@@ -6,12 +6,12 @@ module.exports = {
       {
         username: 'Armando',
         password: '1234123',
-        account_id: 1
+        accountId: 1
       },
       {
         username: 'kaka',
         password: '13213321',
-        account_id: 2
+        accountId: 2
       }
     ], {}),
 

@@ -1,6 +1,6 @@
-import createNewAccount from './createAccounts'
 import getAllAccounts from './getAccounts'
+import getAccountById from './getAccountsById'
 
 export {
-  createNewAccount, getAllAccounts
+  getAllAccounts, getAccountById
 }
