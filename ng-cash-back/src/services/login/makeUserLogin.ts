@@ -38,10 +38,12 @@ const makeUserLogin = async (user: userData) => {
 
     const findMyUser = await User.findOne({ where: { username, password: isValidPassword } })
 
+    console.log(findMyUser, 'user')
+
     if (!findMyUser) return { message: 'usuario inexistente' }
 
     const myToken = jwt.sign({ data: findMyUser }, jwtSecret.trim(), jwtConfig)
-    return { token: myToken }
+    return { token: myToken, user: { username: findMyUser.username, accountId: findMyUser.accountId } }
   } catch (error) {
     console.log(error)
     return { message: 'usuario inexistente' }

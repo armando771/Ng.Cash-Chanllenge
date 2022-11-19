@@ -8,6 +8,8 @@ const makeUserLogin = async (req: Request, res: Response, next: NextFunction) =>
 
     const response = await service.makeUserLogin({ username, password })
 
+    console.log(response, 'respstaaaaaa')
+
     return res.status(200).json(response)
   } catch (err) {
     next(err)
