@@ -34,6 +34,8 @@ export default function Register() {
       
       if (isValid) {
         await api.post('users', body).then((it) => console.log(it))
+
+        navigate("/")
       }
       
 

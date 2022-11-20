@@ -8,8 +8,6 @@ const createNewTransition = async (req: Request, res: Response, next: NextFuncti
 
     const result = await service.createNewTransition({ debitedAccountId, creditedAccountId, value })
 
-    console.log(result, 'result')
-
     return res.status(201).json({ id: result.id, debitedAccountId: result.debitedAccountId, creditedAccountId: result.creditedAccountId, value: result.value, createdAt: result.createdAt })
   } catch (err) {
     console.log(err)
