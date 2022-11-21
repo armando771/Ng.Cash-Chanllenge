@@ -4,7 +4,7 @@
 
 <p>Neste projeto foi proposto um sistema de transferencias entre colaboradores da NG.Cash</p>
 
-## Algumas das principais Tecnologias e Bibliotecas ultilizadas durante a criaçao:
+# Algumas das principais Tecnologias e Bibliotecas ultilizadas durante a criaçao:
 
 ## Tecnologias Front-End
 
