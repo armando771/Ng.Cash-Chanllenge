@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from "../../context/AppContext";
 import {Box, Button, Typography, Modal, TextField } from '@mui/material'
+import api from '../../service/api';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -14,12 +15,38 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({ open, setOpen, handleClose }: any) {
+export default function BasicModal2({ open, setOpen, handleClose }: any) {
 
-    const { user } = useContext(AppContext);
+    const { user, setUser } = useContext(AppContext);
 
     const [inputCreditedUser, setInputCreditedUser] = useState("");
     const [inputCreditedValue, setInputCreditedValue] = useState("");
+
+    const makeNewTransaction = async () => {
+        const findCreditedUser = await api.get(`users/${inputCreditedUser}`)
+
+        if (findCreditedUser.data) {
+            const body = {
+                debitedAccountId: user.accountId,
+                creditedAccountId: findCreditedUser.data.accountId,
+                value: Number(inputCreditedValue)
+            }
+
+            if (inputCreditedUser.length > 3 && inputCreditedValue.length > 0 && Number(inputCreditedValue) > 0 ) {
+                const makeTransaction = await api.post('transactions', body);
+
+                console.log(makeTransaction);
+                
+                
+                if (makeTransaction.status === 201) {
+                    setUser({ accountId: user.accountId, username: user.username, balance: user.balance - Number(inputCreditedValue)})
+                }
+            };
+        }
+        
+        setInputCreditedUser("");
+        setInputCreditedValue("");
+    }
 
   return (
       <Modal
@@ -27,14 +54,15 @@ export default function BasicModal({ open, setOpen, handleClose }: any) {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        closeAfterTransition={false}
       >
         <Box sx={style}>
         
         <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <p>Realizar uma nova transaçao:</p>
-            <TextField label="Informe o usuario que ira receber a transferencia" variant="outlined" color="secondary" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputCreditedUser(e.target.value)  } />
-            <TextField label="Informe o valor da transferencia" variant="outlined" color="secondary" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputCreditedValue(e.target.value)  } />
-            <Button type="button">Transferir</Button>
+            <TextField value={inputCreditedUser} label="Informe o usuario que ira receber a transferencia" variant="outlined" color="secondary" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputCreditedUser(e.target.value)  } />
+            <TextField value={inputCreditedValue} label="Informe o valor da transferencia" variant="outlined" color="secondary" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputCreditedValue(e.target.value)  } />
+            <Button type="button" onClick={() => makeNewTransaction() } >Transferir</Button>
         </div>
 
         </Box>

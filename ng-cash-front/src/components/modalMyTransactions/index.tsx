@@ -1,5 +1,13 @@
-import * as React from 'react';
+import React, { useEffect, useContext } from 'react';
+import moment from 'moment'
+
+import { AppContext } from "../../context/AppContext"
+import api from '../../service/api';
+
+
 import {Box, Button, Typography, Modal } from '@mui/material'
+
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper   } from '@mui/material'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -13,7 +21,7 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({ open, setOpen, handleClose }: any) {
+export default function BasicModal({ open, setOpen, handleClose, transactions }: any) {
 
   return (
       <Modal
@@ -23,10 +31,39 @@ export default function BasicModal({ open, setOpen, handleClose }: any) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            AQUI OLHAMOS AS TRANSAÇOES
-          </Typography>
+        {
+          transactiosnTable(transactions)
+        }
         </Box>
       </Modal>
+  );
+}
+
+const transactiosnTable = (transactions: any) => {
+  return (
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">De: </TableCell>
+            <TableCell align="center">Para: </TableCell>
+            <TableCell align="center">Valor: </TableCell>
+            <TableCell align="center">Data da Transação: </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {transactions.map((transaction: any) => (
+            <TableRow key={transaction.id}>
+              <TableCell component="th" scope="row" align='center'>
+                {transaction.debitedAccountId}
+              </TableCell>
+              <TableCell align="center">{transaction.creditedAccountId}</TableCell>
+              <TableCell align="center">{transaction.value}</TableCell>
+              <TableCell align="center">{moment(transaction.createdAt).format('YYYY/MM/DD')}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }

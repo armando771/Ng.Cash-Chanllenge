@@ -12,8 +12,26 @@ export default function Home() {
   const [openModalNewTransaction, setOpenModalNewTransaction] = useState(false);
   const [openModalTransactions, setOpenModalTransactions] = useState(false);
 
+  const [allTransactions, setAllTransactions] = useState([]);
+
   const handleCloseModalNewTransaction = () => setOpenModalNewTransaction(false);
   const handleCloseModalTransactions = () => setOpenModalTransactions(false);
+
+  console.log(allTransactions,' all');
+  
+  
+  useEffect(() => {
+    const getAllTransactions = async () => {
+      
+      if (user.accountId) {
+
+        const userTransactions = await api.get(`transactions/${user.accountId}`)
+        setAllTransactions(userTransactions.data)
+      };
+
+    };
+    getAllTransactions();
+  }, [user]);
 
   useEffect(() => {
     const getLoggedUser = async () => {
@@ -64,6 +82,7 @@ export default function Home() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            padding: '20px'
           }}
         >
           <Button type="button" onClick={() => setOpenModalTransactions(true)}>
@@ -81,6 +100,7 @@ export default function Home() {
         open={openModalTransactions}
         setOpen={setOpenModalTransactions}
         handleClose={handleCloseModalTransactions}
+        transactions={allTransactions}
       />
     </div>
   );
