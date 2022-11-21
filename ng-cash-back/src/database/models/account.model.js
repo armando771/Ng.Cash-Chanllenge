@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   }, { timestamps: false, freezeTableName: true, tableName: 'Accounts' })
 
   Account.associate = (models) => {
-    models.Account.hasOne(models.User, { foreignKey: 'accountId' })
+    models.Account.hasOne(models.User, { foreignKey: 'accountId', as: 'users' })
     models.Account.hasMany(models.Transaction, { foreignKey: 'debitedAccountId', as: 'debitedAccount' })
     models.Account.hasMany(models.Transaction, { foreignKey: 'creditedAccountId', as: 'creditedAccount' })
   }

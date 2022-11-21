@@ -1,4 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 import app from './app'
 
-app.listen(8080, () => console.log('Rodando na porta 8080')
+app.listen(3001, () => console.log('Rodando na porta 3001')
 )

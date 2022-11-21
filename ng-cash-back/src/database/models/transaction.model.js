@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   }, { tableName: 'Transactions', updatedAt: false, underscored: true })
 
   Transaction.associate = (models) => {
-    Transaction.belongsTo(models.Account, { foreignKey: 'debited_account_id', as: 'accountsCred' })
-    Transaction.belongsTo(models.Account, { foreignKey: 'credited_account_id', as: 'accountsDeb' })
+    Transaction.belongsTo(models.Account, { foreignKey: 'debited_account_id', as: 'accountsDeb' })
+    Transaction.belongsTo(models.Account, { foreignKey: 'credited_account_id', as: 'accountsCred' })
   }
 
   return Transaction

@@ -6,7 +6,7 @@ const UserModel = (sequelize, DataTypes) => {
   }, { timestamps: false, tableName: 'Users' })
 
   User.associate = (models) => {
-    User.belongsTo(models.Account, { foreignKey: 'accountId' })
+    User.belongsTo(models.Account, { foreignKey: 'accountId', as: 'accounts' })
   }
 
   return User
