@@ -32,10 +32,11 @@
 
 <p>Clone o projeto ou execute via .zip<p>
 
-<p>Entre na pasta back-end e execute um "npm install" apos isto execute um "npm run dev" para rodar o servidor Back-End <p>
+<p>Entre na pasta back-end <p>
  
   • Ao entrar na pasta back-end, procure o arquivo '.env.example \
-  • Apos encontra-lo mude seu nome para apenas .env, e preencha as informaçoes presentes nele
+  • Apos encontra-lo mude seu nome para apenas .env, e preencha as informaçoes presentes nele \
+  • Apos essas alteraçoes execute um "npm install" apos isto execute um "npm run dev" para rodar o servidor Back-End
 
 <p>Entre na pasta front-end e execute um "npm install" apos isto execute um "npm run dev" para rodar o app Front-End <p>
 
