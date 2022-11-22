@@ -16,9 +16,6 @@ export default function Home() {
 
   const handleCloseModalNewTransaction = () => setOpenModalNewTransaction(false);
   const handleCloseModalTransactions = () => setOpenModalTransactions(false);
-
-  console.log(allTransactions,' all');
-  
   
   useEffect(() => {
     const getAllTransactions = async () => {
@@ -32,6 +29,7 @@ export default function Home() {
     };
     getAllTransactions();
   }, [user]);
+  
 
   useEffect(() => {
     const getLoggedUser = async () => {
@@ -96,12 +94,13 @@ export default function Home() {
         setOpen={setOpenModalNewTransaction}
         handleClose={handleCloseModalNewTransaction}
       />
-      <ModalMyTransactions
+        <ModalMyTransactions
         open={openModalTransactions}
         setOpen={setOpenModalTransactions}
         handleClose={handleCloseModalTransactions}
         transactions={allTransactions}
       />
+
     </div>
   );
 }

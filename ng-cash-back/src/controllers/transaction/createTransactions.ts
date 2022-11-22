@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { Request, Response, NextFunction } from 'express'
+import moment from 'moment'
+
+moment.locale('pt-br')
+
 const service = require('../../services/transaction/createTransactions')
 
 const createNewTransition = async (req: Request, res: Response, next: NextFunction) => {
@@ -8,7 +12,9 @@ const createNewTransition = async (req: Request, res: Response, next: NextFuncti
 
     const result = await service.createNewTransition({ debitedAccountId, creditedAccountId, value })
 
-    return res.status(201).json({ id: result.id, debitedAccountId: result.debitedAccountId, creditedAccountId: result.creditedAccountId, value: result.value, createdAt: result.createdAt })
+    console.log(moment(result.createdAt).format('DD-MM-YYYY HH:mm:ss'))
+
+    return res.status(201).json({ id: result.id, debitedAccountId: result.debitedAccountId, creditedAccountId: result.creditedAccountId, value: result.value, createdAt: moment(result.createdAt).format('DD-MM-YYYY HH:mm:ss') })
   } catch (err) {
     console.log(err)
 

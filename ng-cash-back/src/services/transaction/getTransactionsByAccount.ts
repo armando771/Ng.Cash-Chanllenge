@@ -36,6 +36,7 @@ const getTransactionsByAccount = async (debitedAccountId: number) => {
         }
       ]
     })
+    // Query usada para retornar o username para a tabela de transactions
 
     return result
   } catch (error) {
