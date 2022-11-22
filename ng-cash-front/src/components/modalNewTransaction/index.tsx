@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import { Box, Button, Modal, TextField, Grid, Typography } from "@mui/material";
 import api from "../../service/api";
+import SnakeBarComponent from "../SnackBar";
 
 export default function BasicModal2({ open, handleClose }: any) {
   const { user, setUser } = useContext(AppContext);
@@ -9,10 +10,25 @@ export default function BasicModal2({ open, handleClose }: any) {
   const [inputCreditedUser, setInputCreditedUser] = useState("");
   const [inputCreditedValue, setInputCreditedValue] = useState("");
 
-  const makeNewTransaction = async () => {
-    const findCreditedUser = await api.get(`users/${inputCreditedUser}`);
+  const [openSnackBarSuccess, setOpenSnackBarSuccess] = useState(false);
+  const [openSnackBarError, setOpenSnackBarError] = useState(false);
 
-    if (findCreditedUser.data) {
+  const handleCloseSnackBar = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenSnackBarSuccess(false);
+    setOpenSnackBarError(false);
+  };
+
+  const makeNewTransaction = async () => {
+    try {
+      const findCreditedUser = await api.get(`users/${inputCreditedUser}`);
+
       const body = {
         debitedAccountId: user.accountId,
         creditedAccountId: findCreditedUser.data.accountId,
@@ -26,9 +42,8 @@ export default function BasicModal2({ open, handleClose }: any) {
       ) {
         const makeTransaction = await api.post("transactions", body);
 
-        console.log(makeTransaction);
-
-        if (makeTransaction.status === 201) {
+        if (makeTransaction.status === 201 || makeTransaction.status === 200) {
+          setOpenSnackBarSuccess(true);
           setUser({
             accountId: user.accountId,
             username: user.username,
@@ -36,10 +51,12 @@ export default function BasicModal2({ open, handleClose }: any) {
           });
         }
       }
-    }
 
-    setInputCreditedUser("");
-    setInputCreditedValue("");
+      setInputCreditedUser("");
+      setInputCreditedValue("");
+    } catch (error) {
+      setOpenSnackBarError(true);
+    }
   };
 
   return (
@@ -85,6 +102,13 @@ export default function BasicModal2({ open, handleClose }: any) {
             Transferir
           </Button>
         </Grid>
+        <SnakeBarComponent
+          errorMessage="Erro ao realizar Transferencia, revise os dados e tente novamente"
+          handleClose={handleCloseSnackBar}
+          openSnackBarError={openSnackBarError}
+          openSnackBarSuccess={openSnackBarSuccess}
+          successMessage="Transferencia bem sucedida"
+        />
       </Box>
     </Modal>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Modal, Typography, TextField, Grid } from "@mui/material";
 
 import TableTransactions from "../Table";
 import FilterRadio from "../FilterRadio";
@@ -55,13 +55,13 @@ export default function TransactionsModal({
       <Box sx={style}>
         <Typography variant="h6">Suas Transações:</Typography>
 
-        <FilterRadio
-          selectedFilter={selectedFilter}
-          handleChange={handleChange}
-        />
-        {/* <div>
-              Filtro aqui
-          </div> */}
+        <Grid item style={{ display: "flex" }}>
+          <FilterRadio
+            selectedFilter={selectedFilter}
+            handleChange={handleChange}
+          />
+        </Grid>
+
         <TableTransactions
           transactions={
             filteredTransaction.length ? filteredTransaction : transactions

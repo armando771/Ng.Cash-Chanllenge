@@ -1,15 +1,31 @@
-import { Grid, Paper, Typography } from "@mui/material";
+import { Grid, Paper, Typography, Snackbar, Stack, Alert } from "@mui/material";
 import { GridContainer, StyledTextField, StyledButton } from "./styles";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import api from "../../../service/api";
 import { useNavigate } from "react-router-dom";
+import SnakeBarComponent from "../../../components/SnackBar";
 
 export default function Login() {
   const navigate = useNavigate();
 
   const [inputUsername, setInputUsername] = useState("");
   const [inputPassword, setInputPassword] = useState("");
+
+  const [openSnackBarSuccess, setOpenSnackBarSuccess] = useState(false);
+  const [openSnackBarError, setOpenSnackBarError] = useState(false);
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenSnackBarSuccess(false);
+    setOpenSnackBarError(false);
+  };
 
   const onSubmitLogin = async () => {
     try {
@@ -21,12 +37,15 @@ export default function Login() {
       const login = await api.post("auth", body);
 
       if (login.status === 200) {
+        setOpenSnackBarSuccess(true);
         localStorage.setItem("token", login.data.token);
         localStorage.setItem("username", login.data.user.username);
         localStorage.setItem("accountId", login.data.user.accountId);
-        navigate("/Home");
+        setTimeout(() => navigate("/Home"), 2000);
       }
-    } catch (error) {}
+    } catch (error) {
+      setOpenSnackBarError(true);
+    }
   };
 
   return (
@@ -72,6 +91,13 @@ export default function Login() {
           </Link>
         </Grid>
       </Paper>
+      <SnakeBarComponent
+        openSnackBarSuccess={openSnackBarSuccess}
+        openSnackBarError={openSnackBarError}
+        handleClose={handleClose}
+        errorMessage="Erro no Login, por favor revise seus dados:"
+        successMessage="Login bem sucedido. Por favor aguarde"
+      />
     </GridContainer>
   );
 }

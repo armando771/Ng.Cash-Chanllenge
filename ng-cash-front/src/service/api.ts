@@ -5,7 +5,7 @@ const api = axios.create({
     headers: {
         'Content-Type': 'application/json',
         Accept: 'json',
-        'Authorization': localStorage.getItem('token')
+        'authorization': localStorage.getItem('token')
     }
 });
 
