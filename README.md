@@ -46,7 +46,11 @@
 ![DemonstraçaoHomeGeneral](/images/HomePageGeneral.png)
 
 ![DemonstraçaoHomeGeneralNoView](/images/HomePageGeneralNoView.png)
-
+  
+## Modal para realizar novas transações
+  
 ![DemonstraçaoHomeMakeTransaction](/images/HomePageTransaction.png)
+  
+## Tabela para visualizar suas transações
 
 ![DemonstraçaoHomeGetTransactions](/images/HomePageAllTransactions.png)
