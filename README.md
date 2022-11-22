@@ -28,9 +28,15 @@
 <p>🔗 <a href="https://www.npmjs.com/package/bcrypt" target="_blank">Bc-Crypt</a></p>
 <p>🔗 <a href="https://momentjs.com/" target="_blank">Moment.JS</a></p>
 
-##
+## Como ultilizar:
 
-## Como Ultilizar:
+<p>Clone o projeto ou execute via .zip<p>
+
+<p>Entre na pasta back-end e execute um "npm install" apos isto execute um "npm run dev" para rodar o servidor Back-End <p>
+
+<p>Entre na pasta front-end e execute um "npm install" apos isto execute um "npm run dev" para rodar o app Front-End <p>
+
+## Sobre o projeto:
 
 <p> O projeto conta com 3 telas, sendo elas: <p>
 
