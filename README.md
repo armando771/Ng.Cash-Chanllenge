@@ -12,8 +12,8 @@
 <p>🔗 <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a></p>
 <p>🔗 <a href="https://vitejs.dev/" target="_blank">Vite Ts</a></p>
 <p>🔗 <a href="https://mui.com/pt/" target="_blank">Material UI</a></p>
-<p>🔗 <a href="https://www.npmjs.com/package/react-toastify" target="_blank">React Toastfy</a></p>
-<p>🔗 <a href="https://www.npmjs.com/package/bcrypt" target="_blank">Bc-Crypt</a></p>
+<p>🔗 <a href="https://styled-components.com/" target="_blank">Styled Componentes</a></p>
+<p>🔗 <a href="https://momentjs.com/" target="_blank">Moment.JS</a></p>
 
 ## Tecnologias Back-End
 
@@ -26,6 +26,7 @@
 <p>🔗 <a href="https://sequelize.org/" target="_blank">Sequelize ORM</a></p>
 <p>🔗 <a href="https://joi.dev/api/?v=17.5.0" target="_blank">Joi</a></p>
 <p>🔗 <a href="https://www.npmjs.com/package/bcrypt" target="_blank">Bc-Crypt</a></p>
+<p>🔗 <a href="https://momentjs.com/" target="_blank">Moment.JS</a></p>
 
 ##
 
