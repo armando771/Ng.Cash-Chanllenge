@@ -18,25 +18,22 @@ const getTransactionsByAccount = async (req: Request, res: Response, next: NextF
   try {
     const { debitedAccountId } = req.params
     const response = await service.getTransactionsByAccount(debitedAccountId)
+    const arr: any = []
 
-    const finalResponse = response.map(({ id, value, createdAt, debitedAccountId, creditedAccountId, accountsDeb, accountsCred }: Iteste) => {
-      const arr: any[] = []
-      if (value) {
-        const obj = {
-          id,
-          value,
-          createdAt: moment(createdAt).format('DD-MM-YYYY HH:mm:ss'),
-          debitedAccountId,
-          creditedAccountId,
-          accountsDeb,
-          accountsCred
-        }
-        arr.push(obj)
+    response.forEach(({ id, value, createdAt, debitedAccountId, creditedAccountId, accountsDeb, accountsCred }: Iteste) => {
+      const obj = {
+        id,
+        value,
+        createdAt: moment(createdAt).format('DD-MM-YYYY HH:mm:ss'),
+        debitedAccountId,
+        creditedAccountId,
+        accountsDeb,
+        accountsCred
       }
-      return arr
+      arr.push(obj)
     })
 
-    return res.status(200).json(finalResponse)
+    return res.status(200).json(arr)
   } catch (err) {
     console.log(err, ' error')
 

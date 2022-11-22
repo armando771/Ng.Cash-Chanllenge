@@ -6,47 +6,82 @@ import api from "../../../service/api";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-
   const navigate = useNavigate();
 
-  const [inputUsername, setInputUsername] = useState('');
-  const [inputPassword, setInputPassword] = useState('');
+  const [inputUsername, setInputUsername] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
 
   const onSubmitLogin = async () => {
     try {
-        const body = {
-          username: inputUsername,
-          password: inputPassword
-        };
+      const body = {
+        username: inputUsername,
+        password: inputPassword,
+      };
 
-        const login = await api.post('auth', body);
+      const login = await api.post("auth", body);
 
-        if (login.status === 200) {
-          localStorage.setItem('token', login.data.token)
-          localStorage.setItem('username', login.data.user.username)
-          localStorage.setItem('accountId', login.data.user.accountId)
-          navigate('/Home')
-        }
-
-    } catch (error) {
-      
-    }
-  }
+      if (login.status === 200) {
+        localStorage.setItem("token", login.data.token);
+        localStorage.setItem("username", login.data.user.username);
+        localStorage.setItem("accountId", login.data.user.accountId);
+        navigate("/Home");
+      }
+    } catch (error) {}
+  };
 
   return (
     <GridContainer container>
-      <Paper elevation={3} sx={{ width: '30%' }} >
-        <Grid style={{ textAlign: "center", padding: "15px"}}>
-          <Typography variant="h4" style={{ fontFamily: 'monospace' }} >NG.PAYments</Typography>
-          <Grid item style={{ display: 'flex', flexDirection: 'column' }}>
-            <StyledTextField label="Your Username" variant="outlined" color="secondary" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputUsername(e.target.value)  } />
-            <StyledTextField label="Your Password" variant="outlined" color="secondary" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputPassword(e.target.value)  }  />
+      <Paper elevation={3} sx={{ width: "30%" }}>
+        <Grid sx={Content}>
+          <Typography variant="h4" style={{ fontFamily: "monospace" }}>
+            NG.PAYments
+          </Typography>
+          <Grid item sx={InputContainer}>
+            <StyledTextField
+              type="text"
+              label="Your Username"
+              variant="outlined"
+              color="secondary"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setInputUsername(e.target.value)
+              }
+            />
+            <StyledTextField
+              type="password"
+              label="Your Password"
+              variant="outlined"
+              color="secondary"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setInputPassword(e.target.value)
+              }
+            />
           </Grid>
-            <StyledButton onClick={ () => onSubmitLogin() } type="button">Login</StyledButton>
-            <Typography variant="h6">Não tem uma conta?</Typography>
-            <Link style={{ textDecoration: 'none', color: 'black' }} to="/Register">Criar uma conta</Link>
+          <StyledButton
+            className="AppButton"
+            onClick={() => onSubmitLogin()}
+            type="button"
+          >
+            Login
+          </StyledButton>
+          <Typography variant="h6">Não tem uma conta?</Typography>
+          <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to="/Register"
+          >
+            Criar uma conta
+          </Link>
         </Grid>
       </Paper>
     </GridContainer>
   );
 }
+
+const InputContainer = {
+  display: "flex",
+  flexDirection: "column",
+};
+
+const Content = {
+  textAlign: "center",
+  padding: "15px",
+};

@@ -48,19 +48,29 @@ export default function Register() {
   return (
     <GridContainer container>
       <Paper elevation={3} sx={{ width: '30%' }} >
-        <Grid style={{ textAlign: "center", padding: "15px"}}>
+        <Grid sx={Content}>
           <Typography variant="h4" style={{ fontFamily: 'monospace' }} >NG.PAYments</Typography>
           <Typography variant="h4">Criar uma nova Conta</Typography>
-          <Grid item style={{ display: 'flex', flexDirection: 'column' }}>
+          <Grid item sx={InputContainer}>
             <StyledTextField type="text" label="Your Username" variant="outlined" color="secondary" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputUsername(e.target.value)  }  />
             <StyledTextField type="text"label="Your Password" variant="outlined" color="secondary" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputPassword(e.target.value)  } />
           </Grid>
           <Grid style={{ display: 'flex' }}>
-          <StyledButton onClick={() => navigate("/") }>Cancelar</StyledButton>
-          <StyledButton  onClick={() => onSubmit()} type="button">Criar</StyledButton>
+          <StyledButton className="AppButton" onClick={() => navigate("/") }>Cancelar</StyledButton>
+          <StyledButton className="AppButton" onClick={() => onSubmit()} type="button">Criar</StyledButton>
           </Grid>
         </Grid>
       </Paper>
     </GridContainer>
   );
+}
+
+const Content = {
+  textAlign: "center",
+   padding: "15px"
+}
+
+const InputContainer = {
+  display: 'flex',
+  flexDirection: 'column'
 }

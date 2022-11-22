@@ -1,0 +1,18 @@
+.AppButton:focus-visible {
+    outline:none;
+    box-shadow: none;
+    border: none;
+
+}
+
+.AppButton:focus {
+    outline:none;
+    box-shadow: none;
+    border: none;
+
+}
+
+.ButtonModal:hover {
+    background-color: black !important;
+    opacity: 0.9;
+}
