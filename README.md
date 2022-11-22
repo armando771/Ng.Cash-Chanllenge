@@ -35,18 +35,18 @@
 
 #  Tela de Login (onde o usuario ira entrar na aplicaçao)
 
-![DemonstraçaoLogin](/public/LoginPage.png)
+![DemonstraçaoLogin](/images/LoginPage.png)
 
 # Tela de Register (onde o usuario ira criar a conta)
 
-![DemonstraçaoRegister](/public/RegisterPage.png)
+![DemonstraçaoRegister](/images/RegisterPage.png)
 
 # Tela Home (Principal tela da aplicação - Onde o usuario ira realizar todas as possiveis operações)
 
-![DemonstraçaoHomeGeneral](/public/HomePageGeneral.png)
+![DemonstraçaoHomeGeneral](/images/HomePageGeneral.png)
 
-![DemonstraçaoHomeGeneralNoView](/public/HomePageGeneralNoView.png)
+![DemonstraçaoHomeGeneralNoView](/images/HomePageGeneralNoView.png)
 
-![DemonstraçaoHomeMakeTransaction](/public/HomePageTransaction.png)
+![DemonstraçaoHomeMakeTransaction](/images/HomePageTransaction.png)
 
-![DemonstraçaoHomeGetTransactions](/public/HomePageAllTransactions.png)
+![DemonstraçaoHomeGetTransactions](/images/HomePageAllTransactions.png)
